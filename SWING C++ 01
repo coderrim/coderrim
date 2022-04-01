@@ -1,47 +1,49 @@
-#include<iostream>
-using namespace std; //std::생략
+//음료 가격 및 금액 입력 받기
 
-int main() {
+#include<iostream>  //#전처리기에 내리는 지시문 <헤더:표준 입출력을 위한 클래스와 객체가 선언됨. 키보드 입력 및 화면 출력 시 필요>
+using namespace std;  //std::생략
+
+int main() {  //실행 시작점으로 반드시 존재해야 하며 종료되면 프로그램도 종료.
 	
-	cout << "당신의 이름은 무엇인가요?" << endl; //이름 묻기
-	char name0[12]; //배열 크기 12
-	cin.getline(name0, 12, '\n'); //공백 포함 문자 입력 받기
-	cout << "반갑습니다." << name0 << "님" << endl; //출력
+	cout << "당신의 이름은 무엇인가요?" << endl;  //cout은 데이터를 콘솔 화면에 출력. endl은 줄바꿈.
+	char name0[12];  //배열 크기 12
+	cin.getline(name0, 12, '\n');  //공백 포함 문자열 입력 받기
+	cout << "반갑습니다." << name0 << "님" << endl;  //콘솔 화면에 출력하고 줄바꿈.
 
-	cout << "  \n"; //공백
-	cout << "---------------SWING 30기---------------" << endl;
+	cout << "  \n"; //공백 출력
+	cout << "---------------SWING 30기---------------" << endl;  //콘솔 화면에 SWING30기 출력하고 줄바꿈.
 
-	cout << "음료의 가격 입력을 시작합니다." << endl; //음료 가격 묻기
+	cout << "음료의 가격 입력을 시작합니다." << endl;  //음료 가격 묻기
 	cout << "  \n";
-	int coke; //변수 생성
-	int samdasu;
-	int hwanta;
+	int coke;  //변수 coke 생성
+	int samdasu;  //변수 samdasu 생성
+	int hwanta;  //변수 hwanta 생성
 
-	cout << "콜라의 가격:";
-	cin >> coke; //음료 가격 입력 받기
+	cout << "콜라의 가격:";  //콘솔 화면에 출력
+	cin >> coke;  //음료 가격 입력 받기. 공백을 만나면 이전 문자열은 모두 하나의 문자열로 인식.
 	cout << "삼다수의 가격:";
 	cin >> samdasu;
 	cout << "환타의 가격:";
 	cin >> hwanta;
 
 	cout << "  \n";
-	cout << "개수를 입력해주세요." << endl; //음료 개수 묻기
+	cout << "개수를 입력해주세요." << endl;  //음료 개수 묻기. 콘솔 화면에 출력 후 줄바꿈.
 	cout << "  \n";
-	int coke_n; //변수 생성
-	int samdasu_n;
-	int hwanta_n;
+	int coke_n;  //변수 coke_n 생성
+	int samdasu_n;  //변수 samdasu_n 생성
+	int hwanta_n;  //변수 hwanta_n 생성
 
-	cout << "콜라의 수량:";
-	cin >> coke_n; //음료 개수 입력 받기
+	cout << "콜라의 수량:";  //콘솔 화면에 출력
+	cin >> coke_n;  //음료 개수 입력 받기. 공백이 있으면 안 됨.
 	cout << "삼다수의 수량:";
 	cin >> samdasu_n;
 	cout << "환타의 수량:";
 	cin >> hwanta_n;
 
-	int price; //가격 변수 생성
-	price = coke * coke_n + samdasu * samdasu_n + hwanta * hwanta_n; //가격*수량의 합
+	int price;  //가격 변수 생성
+	price = coke * coke_n + samdasu * samdasu_n + hwanta * hwanta_n; //가격*수량의 합을 계산.
 
-	cout << "---------------------------------------" << endl;
-	cout << "500원을 할인받아 총" << (price - 500) << "원입니다." << endl; //500원 할인한 총액 출력
+	cout << "---------------------------------------" << endl;  //선 출력 후 줄바꿈.
+	cout << "500원을 할인받아 총" << (price - 500) << "원입니다." << endl;  //500원 할인한 총액 출력 후 줄바꿈.
 
 }
