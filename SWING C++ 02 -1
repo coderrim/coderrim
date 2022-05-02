@@ -36,7 +36,7 @@ int main()
 			j++;
 		} while (j * specific <= num);
 
-		cout << " " << endl; //줄바꿈
+		cout << endl; //줄바꿈
 
 		cout << "<특정배수 제외 출력하는 프로그램>" << endl;
 		for (j = 1; j <= num; j++) //for 반복문. 랜덤한 수를 넘기 전까지 반복.
@@ -46,7 +46,7 @@ int main()
 			cout << j << ",";
 		}
 
-		cout << " " << endl; //줄바꿈
+		cout << endl; //줄바꿈
 
 	}
 
