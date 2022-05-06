@@ -1,19 +1,16 @@
 //랜덤한 범위 내에 입력한 특정한 배수만, 특정한 배수를 제외한 수만 출력하는 프로그램
 
 #include <iostream> //#전처리기에 내리는 지시문 <헤더:표준 입출력을 위한 클래스와 객체가 선언됨. 키보드 입력 및 화면 출력 시 필요>
-#include <stdlib.h> //랜덤함수
-#include <time.h> //계속 다른 랜덤함수가 나오기 위해 필요함.
+#include <random> //랜덤한 임의의 수를 구하기 위한 random 헤더
 
 using namespace std; //std::생략
 
 int main() 
 {
-	srand(time(NULL)); //랜덤함수가 계속 바뀌도록 해줌.
-	int num=rand(); //랜덤한 수 변수 num
-	while (num % 100 != num && num != 100) //while 반복문으로 랜덤 범위 설정. 100으로 나눈 나머지가 원래 숫자와 같거나, 100일 때까지.
-	{
-		num = rand();
-	} 
+	random_device rd; //랜덤한 수를 구하기 위한 random_device
+	int num=rd()%100; //랜덤한 수 변수 num. 랜덤한 수를 구한 후 100으로 나눈 나머지를 구하면 0~99 사이의 수가 나온다.
+	num += 1; //위에서 나온 수에 1을 더해준다면 1~100 사이의 랜덤범위 제한.
+	
 	cout << "랜덤한 수:" << num << endl; //콘솔 화면에 출력
 
 	int multiple; //특정배수 개수 변수 multiple
@@ -36,7 +33,7 @@ int main()
 			j++;
 		} while (j * specific <= num);
 
-		cout << endl; //줄바꿈
+		cout << " " << endl; //줄바꿈
 
 		cout << "<특정배수 제외 출력하는 프로그램>" << endl;
 		for (j = 1; j <= num; j++) //for 반복문. 랜덤한 수를 넘기 전까지 반복.
@@ -46,7 +43,7 @@ int main()
 			cout << j << ",";
 		}
 
-		cout << endl; //줄바꿈
+		cout << " " << endl; //줄바꿈
 
 	}
 
