@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+//Call by value
+
+void swap(int a, int b) {
+	int tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+	cout << "swap 함수 내부에서의 a: " << a << ", b: " << b << endl;
+}
+
+int main() {
+	int m = 3, n = 0;
+	cout << "swap 함수 실행 전의 m: " << m << ", n: " << n << endl;
+	swap(m, n);
+	cout << "swap 함수 실행 후의 m: " << m << ", n: " << n << endl;
+}
+
+//Call by address
+
+void swap(int* a, int* b) {
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+	cout << "swap 함수 내부에서의 *a: " << *a << ", *b: " << *b << endl;
+}
+
+int main() {
+	int m = 3, n = 0;
+	cout << "swap 함수 실행 전의 m: " << m << ", n: " << n << endl;
+	swap(&m, &n);
+	cout << "swap 함수 실행 후의 m: " << m << ", n: " << n << endl;
+}
+
+//Call by reference
+
+void swap(int& a, int& b) {
+	int tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+	cout << "swap 함수 내부에서의 a: " << a << ", b: " << b << endl;
+}
+
+int main() {
+	int m = 3, n = 0;
+	cout << "swap 함수 실행 전의 m: " << m << ", n: " << n << endl;
+	swap(m, n);
+	cout << "swap 함수 실행 후의 m: " << m << ", n: " << n << endl;
+}
