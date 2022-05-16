@@ -1,0 +1,13 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string NAME;
+int A;
+int B;
+int C;
+
+class Area
+{
+	Area AreaOval()
+};
