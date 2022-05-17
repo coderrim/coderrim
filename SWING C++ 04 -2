@@ -2,12 +2,97 @@
 #include <string>
 using namespace std;
 
-string NAME;
-int A;
-int B;
-int C;
-
-class Area
+class Shape
 {
-	Area AreaOval()
+private:
+	string NAME;
+	int A=0;
+	int B=0;
+	int C=0;
+
+public:
+	
+	int getA() {
+		return A;
+	}
+
+	int getB() {
+		return B;
+	}
+
+	int getC() {
+		C = 0;
+		return C;
+	}
+
+	void setTwo()
+	{
+		getA();
+		getB();
+	}
+
+	void setThree()
+	{
+		getA();
+		getB();
+		getC();
+	}
+
+	void AreaOval()
+	{
+		NAME = "CircleA클래스";
+		setTwo();
+		cout << "타원의 넓이는 " << A * B * 3.14 << "이다" << endl;
+	}
+
+	void AreaLadder()
+	{
+		NAME = "Ladder클래스";
+		setThree();
+		cout << "사다리꼴의 넓이는 " << (A + C) / 2 * B << "이다" << endl;
+	}
+
+	void AreaRect()
+	{
+		NAME = "Rectangular클래스";
+		setTwo();
+		cout << "직사각형의 넓이는 " << A * B << "이다" << endl;
+	}
+
+	Shape()
+	{
+		A = 1;
+		B = 5;
+	}
+	~Shape();
+
+	Shape(int x,int y)
+	{
+		A = x;
+		B = y;
+	}
+	
+
+	Shape(int x,int y,int z)
+	{
+		A = x;
+		B = y;
+		C = z;
+	}
+	
+
 };
+
+Shape::~Shape() { cout << "Shape 소멸" << NAME << endl; }
+
+int main(void)
+{
+	Shape a;
+	a.AreaOval();
+	Shape b(10, 20);
+	b.AreaRect();
+	Shape c(3, 7, 4);
+	c.AreaLadder();
+
+	return 0;
+}
