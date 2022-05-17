@@ -1,25 +1,30 @@
 #include <iostream>
-#include <string>
+
 using namespace std;
 
 class Box
 {
 private:
 	char f;
-	int w, h;
+	int w=0;
+	int h=0;
 
 public:
+
+	Box(int w, int h)
+	{
+		w = 3;
+		h = 4;
+		f = '*';
+	}
 
 	void setFil(char f)
 	{
 		if (f)
-		{
 			cin >> f;
-		}
-			
 	}
 
-	void setSize(int w,int h)
+	void setSize(int w, int h)
 	{
 		cin >> w;
 		cin >> h;
@@ -36,37 +41,20 @@ public:
 			cout << endl;
 		}
 	}
-
-	Box(int w, int h)
-	{
-		w = 3;
-		h = 4;
-		f = '*';
-	}
-
-	Box(int w, int h, char f)
-	{
-		w = 6;
-		h = 10;
-		f = '^';
-	}
 };
 
 
-int main(void) 
+int main(void)
 {
 	Box box1(3, 4);
-	box1.setFil();
-	box1.setSize();
+	box1.setFil('*');
+	box1.setSize(3,4);
 	box1.draw();
 
-	Box box2(6,10,'^');
-	box2.setFil();
-	box2.setSize();
+	Box box2(6, 10);
+	box2.setFil('^');
+	box2.setSize(6,10);
 	box2.draw();
 
-	Box setFil();
-	Box setSize();
-	Box draw();
 	return 0;
 }
