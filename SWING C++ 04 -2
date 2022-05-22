@@ -53,7 +53,7 @@ public:
 	{
 		NAME = "Ladder클래스";
 		setThree(A,B,C);
-		cout << "사다리꼴의 넓이는 " << (A + C) / 2 * B << "이다" << endl;
+		cout << "사다리꼴의 넓이는 " << (A + C) / 2.0 * B << "이다" << endl;
 	}
 
 	void AreaRect()
@@ -74,6 +74,8 @@ public:
 	{
 		A = x;
 		B = y;
+		getA();
+		getB();
 	}
 
 
@@ -82,6 +84,9 @@ public:
 		A = x;
 		B = y;
 		C = z;
+		getA();
+		getB();
+		getC();
 	}
 
 
