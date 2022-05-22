@@ -6,12 +6,12 @@ class Shape
 {
 private:
 	string NAME;
-	int A=0;
-	int B=0;
-	int C=0;
+	int A = 0;
+	int B = 0;
+	int C = 0;
 
 public:
-	
+
 	int getA() {
 		return A;
 	}
@@ -21,18 +21,22 @@ public:
 	}
 
 	int getC() {
-		C = 0;
 		return C;
 	}
 
-	void setTwo()
+	void setTwo(int x,int y)
 	{
+		A = x;
+		B = y;
 		getA();
 		getB();
 	}
 
-	void setThree()
+	void setThree(int x,int y,int z)
 	{
+		A=x;
+		B=y;
+		C=z;
 		getA();
 		getB();
 		getC();
@@ -41,21 +45,21 @@ public:
 	void AreaOval()
 	{
 		NAME = "CircleA클래스";
-		setTwo();
+		setTwo(A,B);
 		cout << "타원의 넓이는 " << A * B * 3.14 << "이다" << endl;
 	}
 
 	void AreaLadder()
 	{
 		NAME = "Ladder클래스";
-		setThree();
+		setThree(A,B,C);
 		cout << "사다리꼴의 넓이는 " << (A + C) / 2 * B << "이다" << endl;
 	}
 
 	void AreaRect()
 	{
 		NAME = "Rectangular클래스";
-		setTwo();
+		setTwo(A,B);
 		cout << "직사각형의 넓이는 " << A * B << "이다" << endl;
 	}
 
@@ -66,20 +70,20 @@ public:
 	}
 	~Shape();
 
-	Shape(int x,int y)
+	Shape(int x, int y)
 	{
 		A = x;
 		B = y;
 	}
-	
 
-	Shape(int x,int y,int z)
+
+	Shape(int x, int y, int z)
 	{
 		A = x;
 		B = y;
 		C = z;
 	}
-	
+
 
 };
 
@@ -93,6 +97,9 @@ int main(void)
 	b.AreaRect();
 	Shape c(3, 7, 4);
 	c.AreaLadder();
+	c.setThree(5, 10, 6);
+	c.AreaLadder();
+
 
 	return 0;
 }
