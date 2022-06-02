@@ -1,0 +1,200 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Member
+{
+public:
+    string name;
+    string id;
+    string password;
+public:
+    Member(string name = "admin", string id = "admin", string password = "admin")
+    {
+        this->name = name;
+        this->id = id;
+        this->password = password;
+    }
+    string getName() { return this->name; }
+    void setName(string name) { this->name = name; }
+
+    string getId() { return this->id; }
+    void setId(string id) { this->id = id; }
+
+    string getPassword() { return this->password; }
+    void sePassword(string password) { this->password = password; }
+};
+
+class Login
+{
+    bool result = false;
+    int count = 0;
+public:
+    Member member;
+    Login() { result = false; }
+    bool login(string id, string password);
+    void Register(string id, string name, string password);
+
+};
+
+
+class Cart {
+private:
+    string course; // 추가하는 강의 이름
+    //int class_num = 0; // 추가하는 강의 학수 번호
+    int total = 0; // 구입하는 음료 가격 합산 값 
+    int money = 0;
+    bool bag = true;
+    int array_num = 0;
+    string basic_course[3] = { "c++", "linux", "reversing" };
+    string mybag[3] = { "" };
+    string course_num[3] = { "0001","0002","0003" };
+public:
+    Cart() { 
+        total = 0;
+        money = 0;
+        bag = true;
+        array_num = 0;
+    };
+    void bag_course();//장바구니 담기
+
+    void put_bag();
+
+    void print();
+};
+
+bool Login::login(string id, string password)
+{
+    result = false;
+    if (id.compare(member.id) == 0 && password.compare(member.password) == 0)
+    {
+        cout << "@@성공적으로 로그인이 완료되었습니다.@@" << endl << endl << endl << endl;
+        cout << "######### " << member.getName() << "님 환영합니다" << " #########";
+        result = true;
+    }
+    else
+    {
+        count++;
+        cout << "아이디 혹은 비밀번호가 틀렸습니다." << endl << endl;
+    }
+    return result;
+}
+void Login::Register(string id, string name, string password)
+{
+    Member* member = new Member(id, name, password);
+}
+
+void Cart::bag_course() {
+    bag = true;
+    string class_num;
+    cout << "담고 싶은 강의 번호 : ";
+    cin >> class_num;
+    for (int h = 0; h < 3; h++) {
+        if (course_num[h] == class_num) {
+            for (int i = 0; i < 3; i++) {
+                if (mybag[i] == basic_course[h])
+                {
+                    cout << "이미 MY 장바구니에 담겨져 있습니다." << endl;
+                    bag = false;
+                }
+            }
+            if (bag)
+                mybag[array_num++] = basic_course[h];
+        }
+    }
+}
+void Cart::put_bag() {
+    cout << "<나의 장바구니> " << endl;
+    for (int i = 0; i < 3; i++) { cout << i + 1 << ". " << mybag[i] << endl; }
+    cout << endl;
+}
+void Cart::print() {
+    cout << "<강의목록>" << endl;
+    for (int i = 0; i < 3; i++) {
+        cout << i + 1 << "." << basic_course[i] << endl;
+        cout << " -->" << course_num[i] << endl;
+    }
+}
+
+
+int main() {
+    int num;
+    string a, b;
+    int x,y,f = 0;
+    Login* ptr = new Login;
+    Cart first;
+    Cart* p = &first;
+
+
+    while (1)
+    {
+        cout << "--------------------- 서울여자대학교 종합정보시스템 --------------------- " << endl;
+        cout << "1. 회원가입" << endl;
+        cout << "2. 로그인" << endl;
+        cout << "   >> 번호를 입력하세요  ";
+        cin >> num;
+        if (num != 1 && num != 2) { cout << "1 또는 2만입력해주세요" << endl; cin >> num; }
+        cout << "---------------------------------------------------------------------------- " << endl;
+        cout << endl;
+        switch (num)
+        {
+        case 1:
+            cout << "이름: ";
+            cin >> a;
+            ptr->member.setName(a);
+            cout << "아이디: ";
+            cin >> a;
+            ptr->member.setId(a);
+            cout << "비밀번호: ";
+            cin >> a;
+            ptr->member.sePassword(a);
+            ptr->Register(ptr->member.getId(), ptr->member.getName(), ptr->member.getPassword());
+            cout << "@@성공적으로 회원가입이 완료되었습니다.@@" << endl << endl;
+            break;
+        case 2:
+            cout << "아이디: ";
+            cin >> a;
+            cout << "비밀번호: ";
+            cin >> b;
+            bool ff = ptr->login(a, b);
+            if (ff)
+            {
+                cout << endl;
+                while (1) {
+                    cout << "----------메뉴판----------" << endl;
+                    cout << "1. 장바구니" << endl;
+                    cout << "2. 강의 담기" << endl;
+                    cout << "3. 수강신청 확인" << endl;
+                    cout << "4. 로그아웃 " << endl;
+                    cout << "번호를 입력하세요: ";
+                    cin >> num;
+                    cout << endl;
+
+                        switch (num) {
+                        case 1:
+                            cout << "---------강의목록---------" << endl;
+                            p->print();
+                            cout << endl;
+                            break;
+                        case 2:
+                            cout << "---------강의번호---------" << endl;
+                            p->bag_course();
+                            cout << endl;
+                            break;
+                        case 3:
+                            cout << "--------MY 장바구니--------" << endl;
+                            p->put_bag();
+                            break;
+                        case 4:
+                            cout << "----------로그아웃----------" << endl;
+                            cout << "로그아웃 되었습니다. 안녕히 가세요."<<endl;
+                            delete(ptr);
+                            return 0;
+                        }
+                }
+
+            }
+        }
+    }
+
+}
